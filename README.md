@@ -31,11 +31,25 @@ Code and general workflow:
       - Sbatch file: cyan_processing.sbatch  
         
 4. Ice data  
-
+  a. generate_ice_tibble.R  
+    - Purpose: Generates a csv file detailing which lakes overlapped with the ice mask for our entire study period. This is later used in compile_data.R to replace missing bloom values with "no bloom," which creates a more balanced dataset for training the INLA model, especially in winter months.  
+    - Sbatch file: generate_ice_tibble.sbatch  
 5. PRISM data  
-
+  a. prism_download.R  
+    - Purpose: Automatically downloads daily PRISM air temperature and precipitation data for our study period.
+    - Sbatch file: prism_download.sbatch  
+    
+    b. prism_processing_conus.R  
+    - Purpose: Calculates weekly mean air temp and precipitation for each lake for the duration of our study period.  
+    - Sbatch file: prism_download.sbatch  
+    
 6. Water temp data  
-
+  a. See https://github.com/bschaeff/SW_Model; this repository is used to generate __rf_pred_temp_2016_2022_for_inla.csv__ for this analysis.  
 7. Data compilation  
-
+  a. compile_data.R  
+    - Purpose: Join all datasets together for INLA model. Final column names were selected to match the column names Mark Myer used in his INLA code.  
+    - Sbatch file: compile_data.sbatch  
 8. INLA model  
+  a. conus_inla.R
+     - Purpose: Run the INLA model and generate all model outputs (figures, tables, uncertainty analysis, etc) for INLA paper.
+     - Sbatch file: conus_inla.sbatch
