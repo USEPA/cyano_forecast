@@ -1274,7 +1274,7 @@ ci_observations <- scale_dns(dn_observations)
 summary(dn_observations); summary(ci_observations)
 
 ## Calculate bloom threshold for CIcyano
-bloom_threshold <- scale_dns(97)
+bloom_threshold <- scale_dns(130)
 
 ## Introduce uncertainty ----
 
